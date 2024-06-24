@@ -1,10 +1,12 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class SpeechBubble : MonoBehaviour
 {
     public Text speechText; // Referencia al componente de texto
     public GameObject speechPanel; // Referencia al panel del globo
+    public float displayTime = 3f; // Tiempo que el globo se mostrará
 
     void Start()
     {
@@ -17,9 +19,17 @@ public class SpeechBubble : MonoBehaviour
     {
         speechText.text = text;
         speechPanel.SetActive(true);
+        StartCoroutine(HideAfterTime(displayTime));
     }
 
-    // Método para ocultar el globo de conversación
+    // Coroutine para ocultar el globo después de un tiempo
+    private IEnumerator HideAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        speechPanel.SetActive(false);
+    }
+
+    // Método para ocultar el globo de conversación manualmente
     public void HideSpeechBubble()
     {
         speechPanel.SetActive(false);
