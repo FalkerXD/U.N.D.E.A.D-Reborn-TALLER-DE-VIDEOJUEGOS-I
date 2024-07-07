@@ -173,7 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fa73726e8cb6bc439c8ca299633a20c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthBarImage: {fileID: 0}
+  healthBarImage: {fileID: 9536706}
 --- !u!114 &9536706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameTime: 100
-  gameTimer: {fileID: 0}
+  gameTimer: {fileID: 1644165980}
 --- !u!4 &52010237
 Transform:
   m_ObjectHideFlags: 0
@@ -1206,8 +1206,8 @@ MonoBehaviour:
   mobPrefab: {fileID: 568869881}
   spawnAreaMin: {x: 32.4, y: -1.14}
   spawnAreaMax: {x: -83.27, y: -75.1}
-  numberOfMobs: 10
-  spawnInterval: 5
+  numberOfMobs: 1
+  spawnInterval: 10
   player: {fileID: 544970347}
 --- !u!4 &986576608
 Transform:
