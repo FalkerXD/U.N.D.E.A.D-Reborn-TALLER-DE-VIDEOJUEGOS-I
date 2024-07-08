@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     private float timer;
     private bool gameEnded = false;
     public GameTimer gameTimer; // Referencia al script GameTimer
+    public LevelManager levelManager; // Referencia al script LevelManager
 
     void Start()
     {
@@ -26,12 +27,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void EndGame()
+    public void EndGame()
     {
         gameEnded = true;
         // Aquí puedes añadir lo que pasa cuando el tiempo se acaba
         Debug.Log("El tiempo se ha acabado!");
-        SceneManager.LoadScene("NIVEL 2");
+        SceneManager.LoadScene("MENU FINAL");
+    }
+
+    public void CompleteLevel()
+    {
+        gameEnded = true;
+        levelManager.CompleteLevel();
     }
 
     public bool IsGameEnded()
