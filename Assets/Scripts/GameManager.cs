@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
         gameEnded = true;
         // Aquí puedes añadir lo que pasa cuando el tiempo se acaba
         Debug.Log("El tiempo se ha acabado!");
-        SceneManager.LoadScene("MENU FINAL");
+        SceneManager.LoadScene("NIVEL 2");
     }
 
     public void CompleteLevel()
