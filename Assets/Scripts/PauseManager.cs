@@ -29,17 +29,28 @@ public class PauseManager : MonoBehaviour
 
     public void ResumeGame()
     {
-        SceneManager.UnloadSceneAsync(pauseSceneName);
-        Time.timeScale = 1f;
-        backgroundMusic.UnPause();
-        isPaused = false;
+        if (SceneManager.GetSceneByName(pauseSceneName).isLoaded)
+        {
+            SceneManager.UnloadSceneAsync(pauseSceneName).completed += (AsyncOperation op) =>
+            {
+                Time.timeScale = 1f;
+                if (backgroundMusic != null)
+                {
+                    backgroundMusic.UnPause();
+                }
+                isPaused = false;
+            };
+        }
     }
 
     void PauseGame()
     {
         SceneManager.LoadScene(pauseSceneName, LoadSceneMode.Additive);
         Time.timeScale = 0f;
-        backgroundMusic.Pause();
+        if (backgroundMusic != null)
+        {
+            backgroundMusic.Pause();
+        }
         isPaused = true;
     }
 

@@ -5,12 +5,17 @@ public class PauseMenu : MonoBehaviour
 {
     public void Resume()
     {
-        SceneManager.UnloadSceneAsync("MENU PAUSA");
-        Time.timeScale = 1f;
-        AudioSource backgroundMusic = FindObjectOfType<AudioSource>();
-        if (backgroundMusic != null)
+        if (SceneManager.GetSceneByName("MENU PAUSA").isLoaded)
         {
-            backgroundMusic.UnPause();
+            SceneManager.UnloadSceneAsync("MENU PAUSA").completed += (AsyncOperation op) =>
+            {
+                Time.timeScale = 1f;
+                AudioSource backgroundMusic = FindObjectOfType<AudioSource>();
+                if (backgroundMusic != null)
+                {
+                    backgroundMusic.UnPause();
+                }
+            };
         }
     }
 
